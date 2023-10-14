@@ -142,3 +142,145 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// Destructuring
+
+/*
+const book = getBook(3);
+book;
+
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+
+console.log(title, author, genres);
+
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres; //Rest Operator
+
+console.log(primaryGenre, secondaryGenre, otherGenres);
+
+const newGenres = [...genres, "epic fantasy"]; //Spread Operator
+newGenres;
+
+const updatedBook = {
+  ...book,
+  //Adding new property
+  moviePublicationDate: "2001-12-19",
+  //Overwrite existing property
+  pages: 1210,
+}; //Spread Operator in a object
+updatedBook;
+
+//function getYear(str) {
+//  return str.split('-')[0];
+//}
+
+const getYear = (str) => str.split("-")[0]; //Arrow functions
+console.log(getYear(publicationDate));
+
+const summary = `${title} is a book with ${pages} pages, written by ${author} and published in ${getYear(
+  publicationDate
+)}. The book has${hasMovieAdaptation ? "" : " not"} been adapted as a movie`; //Template Literals ``
+summary;
+
+const pagesRange = pages > 1000 ? "over a thousand" : "less than 1000"; // Ternaries instead of if/else
+console.log(`The book has ${pagesRange} pages.`);
+
+function getTotalReviewCount(book) {
+  const goodread = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodread + librarything;
+}
+
+console.log(getTotalReviewCount(book));
+*/
+
+// Map Method - create a new array based on the original array
+
+/*
+const books = getBooks();
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+titles;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+}));
+essentialData;
+
+// Filter Method - self-explanatory, it filters elements out, creating a new array. --Chainable--
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBooks;
+
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title);
+
+adventureBooks;
+
+// Reduce Method
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks; // acc starts at 0, and it adds up the numbers from book.pages
+
+// Sort Method - the method changes - mutates -  the array itself, without making a new one
+
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b);
+sorted;
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
+
+// Immutable Arrays
+
+// 1. Add a book object to array
+const newBook = {
+  id: 6,
+  title: "something something",
+  author: "J. K. Rownling",
+};
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// 2. Delete a book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// 3. Update a book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1 } : book
+);
+booksAfterUpdate;
+*/
+
+// Fetch
+
+/*
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+console.log("sauce");
+*/
+
+// Async, Await
+
+async function getTodos() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const data = await response.json();
+  console.log(data);
+
+  return data;
+}
+
+const todos = getTodos();
+console.log(todos);
+console.log("sauce2");

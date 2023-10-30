@@ -1,0 +1,102 @@
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+main {
+  display: flex;
+  flex-flow: column;
+  margin: 0 10%;
+}
+
+#gmp-map {
+  position: relative;
+  margin: 10vh auto;
+  width: 50%;
+  height: 50vh;
+  opacity: 0;
+  animation: opac 1s 5s forwards;
+}
+
+@keyframes opac {
+  to {
+    opacity: 1;
+  }
+}
+
+header>h1 {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  color: aliceblue;
+  font-size: 5em;
+  font-family: Inter;
+  font-weight: 600;
+  height: min-content;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-right: 5px solid;
+  animation: blink-caret 1s step-end infinite;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: orange;
+  }
+}
+
+#map-line {
+  height: 3px;
+  margin: 0 5%;
+  margin-bottom: 2vh;
+}
+
+#location {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+  align-items: center;
+}
+
+#location>p {
+  display: inline-block;
+  line-height: 1.5;
+  font-family: Inter;
+  font-size: 2rem;
+}
+
+#location>p>span {
+  display: block;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+
+  /* Adjust styles for small screens */
+  #gmp-map {
+    margin: 4vh auto;
+    width: 90%;
+    height: 25vh;
+  }
+
+  #location>p {
+    font-size: 1.3rem;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* Adjust styles for tablets */
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 1024px) {
+  /* Adjust styles for larger screens */
+}

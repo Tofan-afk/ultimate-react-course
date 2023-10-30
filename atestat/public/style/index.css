@@ -1,0 +1,455 @@
+#root {
+    display: contents;
+}
+
+#timisoara {
+    position: relative;
+    top: 80%;
+    float: right;
+    max-width: 350px;
+    background-color: rgba(105, 112, 119, 0.6);
+}
+
+#phone_location>p,
+#loc>a>p {
+    margin: 0;
+    display: inline-block;
+    background-image: linear-gradient(90deg, #FBDF4E, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+    background-clip: text;
+}
+
+main {
+    grid-area: 2/ 1/ 3/ 1;
+    flex-grow: 1;
+    padding-top: 20px;
+    min-height: 100%;
+}
+
+/* Further Down */
+
+main>h1 {
+    text-align: center;
+}
+
+header>h1>span {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 5rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 9.6px;
+    transform: translateX(-1000px);
+}
+
+header>h1>span:nth-child(1) {
+    animation: h1 1s 4.5s 1 forwards;
+}
+
+header>h1>span:nth-child(2) {
+    top: 32%;
+    transform: translateX(-1000px);
+    animation: h1 1s 5s 1 forwards;
+}
+
+#further>h1 {
+    display: inline-block;
+    padding: 0 10%;
+    font-family: Hahmlet;
+    font-size: 2.3rem;
+    font-weight: 400;
+    letter-spacing: 5.12px;
+}
+
+#further {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    animation-name: arr_o;
+    animation-duration: 1s;
+}
+
+.arrow_vanish {
+    animation-name: arr_c;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#arr_1 {
+    animation-name: arr1;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+#arr_2 {
+    animation-name: arr2;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+/* Section I */
+#s1 {
+    display: flex;
+    align-items: center;
+    margin-top: 3vh;
+    height: 50vh;
+}
+
+#section_1 {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+#section_1_text {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+#text {
+    display: block;
+    font-family: Playfair Display;
+    font-size: 3rem;
+    position: relative;
+}
+
+#text2 {
+    display: block;
+    font-family: Playfair Display;
+    font-size: 3rem;
+    position: relative;
+    right: -20%;
+}
+
+#section_1_svg {
+    will-change: transform, opacity;
+    background-color: rgba(68, 68, 68, 0.2);
+    position: absolute;
+    left: -47%;
+    height: 40vh;
+    width: 47vw;
+}
+
+#section_1_img {
+    will-change: transform, opacity;
+    position: absolute;
+    left: -42%;
+    width: 36%;
+    height: 35vh;
+    background-image: url("food_1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Section II */
+#s2 {
+    margin-top: 100px;
+    width: 100%;
+    height: 28vh;
+    position: relative;
+    background-image: url(table.jpg);
+
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* This is what makes the background image rescale based
+on the container's size */
+    background-size: cover;
+
+    /* Set a background color that will be displayed
+while the background image is loading */
+    background-color: #000000;
+    z-index: 4;
+}
+
+#s2>p {
+    position: relative;
+    margin-top: 10vh;
+    text-align: center;
+    color: white !important;
+    font-size: 3rem;
+    font-family: Hammersmith One;
+
+}
+
+#s2>h2 {
+    position: relative;
+    margin: 0 auto;
+    top: 5vh;
+    text-align: center;
+    color: #e4b415 !important;
+    font-size: 3.5rem;
+    font-family: Josefin Sans;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#block {
+    position: absolute;
+    /* Overlay will be positioned absolutely within the container */
+    top: 0;
+    /* Adjust as needed */
+    left: 0;
+    /* Adjust as needed */
+    background-color: #FFF;
+    will-change: transform, opacity;
+    height: inherit;
+    width: 100%;
+    z-index: 5;
+}
+
+/* Slideshow */
+
+#h1_under_promo {
+    margin-top: 3vh;
+    font-family: Playfair Display;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.slider-container {
+    padding: 40px 0 !important;
+    width: 80% !important;
+    margin: 0 auto !important;
+}
+
+.slider-container>li {
+    border-radius: 10px;
+}
+
+.card_content {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.card_content>h3 {
+    font-size: 1.5rem;
+    font-family: Inter;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.swiffy-slider {
+    padding: 20px 0;
+    background-color: rgba(255, 192, 76, 0.4);
+    margin: 7vh 0;
+}
+
+#slide1 {
+    background-image: url('../style/menu/caprese-salad.jpg');
+}
+
+#slide2 {
+    background-image: url('../style/menu/beef-tenderloin.jpg');
+}
+
+#slide3 {
+    background-image: url('../style/menu/water.jpg');
+}
+
+#slide4 {
+    background-image: url('../style/menu/cheesecake.jpg');
+}
+
+#slide5 {
+    background-image: url('../style/menu/onion-soup.jpg');
+}
+
+#slide6 {
+    background-image: url('../style/menu/orange-juice.jpg');
+}
+
+#slide7 {
+    background-image: url('../style/menu/chicken-marsala.jpeg');
+}
+
+#slide8 {
+    background-image: url('../style/menu/stuffed-mushrooms.jpg');
+}
+
+#slide9 {
+    background-image: url('../style/menu/vegetarian-pasta.jpeg');
+}
+
+.slide-photos {
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* This is what makes the background image rescale based on the container's size */
+    background-size: cover;
+    height: 80%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Menu Button */
+.cssbuttons-io-button {
+    margin: 0 auto;
+    margin-bottom: 2vh;
+    background: #f0c370;
+    color: white !important;
+    font-family: Inter;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #a6874d;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+}
+
+.cssbuttons-io-button .i {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #b9a152;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .i {
+    width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .i svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #b99552 !important;
+}
+
+.cssbuttons-io-button .i svg path:nth-child(1) {
+    fill: none !important;
+    color: black !important;
+}
+
+.cssbuttons-io-button .i svg path:nth-child(2) {
+    fill: currentColor !important;
+    color: black !important;
+}
+
+.cssbuttons-io-button:hover .i svg {
+    transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .i {
+    transform: scale(0.95);
+}
+
+
+/*Animations*/
+
+@keyframes arr1 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(0, 0)
+    }
+
+    50% {
+        transform: translate(0, 50%)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+@keyframes arr2 {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    25% {
+        transform: translate(0, 50%)
+    }
+
+    50% {
+        transform: translate(0, 50%)
+    }
+
+    100% {
+        transform: translate(0, 0)
+    }
+}
+
+@keyframes arr_o {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes arr_c {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes h1 {
+    from {
+        transform: translateX(-1000px);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 800px) {
+    #s1 {
+        flex-direction: column;
+        gap: 15vh;
+    }
+
+    #section_1 {
+        width: 100%;
+        margin-top: 15vh;
+    }
+
+    #section_1_text {
+        width: 100%;
+    }
+}

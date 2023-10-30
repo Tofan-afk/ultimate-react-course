@@ -1,0 +1,264 @@
+header>h1 {
+  display: block;
+  text-align: center;
+  position: relative;
+  top: 35%;
+  font-family: Inter;
+  font-size: 10.5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: 9.6px;
+  z-index: 99999999;
+}
+
+.roller {
+  height: 10.125rem;
+  line-height: 4rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c8cdffea;
+  animation: shadow 1s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 7s;
+}
+
+.roller:nth-child(2) {
+  display: flex;
+  gap: 4%;
+  justify-content: center;
+}
+
+.roller #rolltext_1 {
+  position: relative;
+  top: 2em;
+  animation: slide 2s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 4.5s;
+}
+
+.roller #rolltext_2 {
+  position: relative;
+  top: 2em;
+  animation: slide 2s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+}
+
+.roller #rolltext_3 {
+  position: relative;
+  top: 2em;
+  animation: slide 2s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 5.3s;
+}
+
+#left,
+#right {
+  width: 22vw;
+}
+
+#flex {
+  display: flex;
+  height: auto;
+}
+
+#interior {
+  width: 56vw;
+}
+
+#interior>p {
+  margin-top: 10vh;
+  line-height: 2.5;
+  font-family: Playfair Display;
+  font-size: 2em;
+}
+
+#interior>p>span:nth-child(1) {
+  display: inline-block;
+  font-family: Inter;
+  line-height: 1.5;
+  font-size: 3em;
+  font-weight: 600;
+  transform:scaleY(0);
+  animation: we_are 1s 7.5s 1 forwards;
+}
+
+#msg {
+  flex: 1;
+  font-family: Josefin Sans;
+  font-size: 1.5em;
+}
+
+/* FORM */
+#form {
+  margin-top: 3vh;
+}
+
+#form > h2 {
+  display: inline-block;
+  background-color: #333333;
+  color:aliceblue;
+  padding: 1vw;
+  font-family: Josefin Sans;
+  font-weight: 400;
+  font-size: 2em;
+  transform: translateX(-100vw);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather);
+
+*form,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 30vw;
+  text-align: center;
+  margin: 4vh auto;
+}
+
+form input,
+form textarea {
+  border: 0;
+  outline: 0;
+  padding: 1em;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  margin-top: 2em;
+  font-family: "Merriweather", sans-serif;
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+form input:focus,
+form textarea:focus {
+  -moz-box-shadow: 0 0px 2px #e74c3c !important;
+  -webkit-box-shadow: 0 0px 2px #e74c3c !important;
+  box-shadow: 0 0px 2px #e74c3c !important;
+}
+form #input-submit {
+  display: block;
+  color: white;
+  background: #e74c3c;
+  cursor: pointer;
+  font-size: 1.5em;
+  width: 100%;
+  margin: 2em auto;
+}
+form #input-submit:hover {
+  -moz-box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
+  -webkit-box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
+  box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
+}
+form textarea {
+  height: 74%;
+}
+
+.half {
+  float: left;
+  width: 45%;
+  margin-bottom: 1em;
+}
+
+.right {
+  height: auto;
+}
+
+.left {
+  margin-right: 5%;
+}
+
+@media (max-width: 480px) {
+  .half {
+    width: 100%;
+    float: none;
+    margin-bottom: 0;
+  }
+}
+/* Clearfix */
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.cf:after {
+  clear: both;
+}
+
+/* ANIMATION */
+
+@keyframes we_are {
+  100% { transform: scaleY(1);}
+}
+
+@keyframes shadow {
+  0% {
+    text-shadow: 0;
+  }
+
+  100% {
+    text-shadow: 20px 10px 1px rgba(146, 146, 146, 0.644);
+  }
+}
+
+@keyframes slide {
+  0% {
+    top: 4em;
+  }
+
+  100% {
+    top: -3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #F1FAEE;
+    font-size: 2.125rem;
+  }
+
+  .roller {
+    height: 2.6rem;
+    line-height: 2.125rem;
+  }
+
+  #spare-time {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .roller #rolltext {
+    animation: slide-mob 5s infinite;
+  }
+
+  @keyframes slide-mob {
+    0% {
+      top: 0;
+    }
+
+    100% {
+      top: -2.125rem;
+    }
+  }
+}

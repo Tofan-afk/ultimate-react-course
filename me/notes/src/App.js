@@ -1,112 +1,95 @@
 import React, { useState } from "react";
-import SVG from "react";
 import "./App.css";
 
-var notes = [
-  {
-    title: "How to make a round button with SVG",
-    content:
-      "SVG stands for Scalable Vector Graphics, which is a way of creating and displaying images using XML code. SVG images can be scaled without losing quality, and can be styled and animated with CSS and JavaScript. To make a round button with SVG, you need to use the <circle> and <line> elements, and set their attributes such as cx, cy, r, fill, stroke, and stroke-width. You can also add event listeners to the button to make it interactive. Here is an example of a round button with a plus sign in the middle:",
-    image: "https://picsum.photos/800",
-  },
-  {
-    title: "How to make a JS array with objects",
-    content:
-      "An array is a data structure that can store multiple values in a single variable. An object is a data structure that can store key-value pairs, where each key has a name and a value. You can make a JS array with objects by using the square brackets [ ] to create an array, and the curly braces { } to create an object. Each object in the array is separated by a comma, and each key-value pair in the object is separated by a colon. The value of a key can be any data type, such as a string, a number, a boolean, an array, or another object. Here is an example of a JS array with objects, each object having a name, age, and hobbies:",
-    image: "https://picsum.photos/900",
-  },
-  {
-    title: "How to make a poem with Bing",
-    content:
-      "Bing is a search engine that can help you find information and inspiration on the web. Bing can also help you create a poem with its AI-powered chat mode, which can generate imaginative and innovative content such as poems, stories, essays, songs, and pictures. To make a poem with Bing, you can simply ask Bing to write a poem for you, and specify the topic, style, or mood of the poem. Bing will then use its natural language generation skills to create a poem for you. Here is an example of a poem that Bing wrote for me about love:",
-    image: "https://picsum.photos/1000",
-  },
-  {
-    title: "How to make a round button with SVG",
-    content:
-      "SVG stands for Scalable Vector Graphics, which is a way of creating and displaying images using XML code. SVG images can be scaled without losing quality, and can be styled and animated with CSS and JavaScript. To make a round button with SVG, you need to use the <circle> and <line> elements, and set their attributes such as cx, cy, r, fill, stroke, and stroke-width. You can also add event listeners to the button to make it interactive. Here is an example of a round button with a plus sign in the middle:",
-    image: "https://picsum.photos/800",
-  },
-  {
-    title: "How to make a JS array with objects",
-    content:
-      "An array is a data structure that can store multiple values in a single variable. An object is a data structure that can store key-value pairs, where each key has a name and a value. You can make a JS array with objects by using the square brackets [ ] to create an array, and the curly braces { } to create an object. Each object in the array is separated by a comma, and each key-value pair in the object is separated by a colon. The value of a key can be any data type, such as a string, a number, a boolean, an array, or another object. Here is an example of a JS array with objects, each object having a name, age, and hobbies:An array is a data structure that can store multiple values in a single variable. An object is a data structure that can store key-value pairs, where each key has a name and a value. You can make a JS array with objects by using the square brackets [ ] to create an array, and the curly braces { } to create an object. Each object in the array is separated by a comma, and each key-value pair in the object is separated by a colon. The value of a key can be any data type, such as a string, a number, a boolean, an array, or another object. Here is an example of a JS array with objects, each object having a name, age, and hobbies:An array is a data structure that can store multiple values in a single variable. An object is a data structure that can store key-value pairs, where each key has a name and a value. You can make a JS array with objects by using the square brackets [ ] to create an array, and the curly braces { } to create an object. Each object in the array is separated by a comma, and each key-value pair in the object is separated by a colon. The value of a key can be any data type, such as a string, a number, a boolean, an array, or another object. Here is an example of a JS array with objects, each object having a name, age, and hobbies:",
-    image: "https://picsum.photos/900",
-  },
-  {
-    title: "How to make a poem with Bing",
-    content:
-      "Bing is a search engine that can help you find information and inspiration on the web. Bing can also help you create a poem with its AI-powered chat mode, which can generate imaginative and innovative content such as poems, stories, essays, songs, and pictures. To make a poem with Bing, you can simply ask Bing to write a poem for you, and specify the topic, style, or mood of the poem. Bing will then use its natural language generation skills to create a poem for you. Here is an example of a poem that Bing wrote for me about love:",
-    image: "https://picsum.photos/1000",
-  },
-  {
-    title: "How to make a round button with SVG",
-    content:
-      "SVG stands for Scalable Vector Graphics, which is a way of creating and displaying images using XML code. SVG images can be scaled without losing quality, and can be styled and animated with CSS and JavaScript. To make a round button with SVG, you need to use the <circle> and <line> elements, and set their attributes such as cx, cy, r, fill, stroke, and stroke-width. You can also add event listeners to the button to make it interactive. Here is an example of a round button with a plus sign in the middle:",
-    image: "https://picsum.photos/800",
-  },
-  {
-    title: "How to make a JS array with objects",
-    content:
-      "An array is a data structure that can store multiple values in a single variable. An object is a data structure that can store key-value pairs, where each key has a name and a value. You can make a JS array with objects by using the square brackets [ ] to create an array, and the curly braces { } to create an object. Each object in the array is separated by a comma, and each key-value pair in the object is separated by a colon. The value of a key can be any data type, such as a string, a number, a boolean, an array, or another object. Here is an example of a JS array with objects, each object having a name, age, and hobbies:",
-    image: "https://picsum.photos/900",
-  },
-  {
-    title: "How to make a poem with Bing",
-    content:
-      "Bing is a search engine that can help you find information and inspiration on the web. Bing can also help you create a poem with its AI-powered chat mode, which can generate imaginative and innovative content such as poems, stories, essays, songs, and pictures. To make a poem with Bing, you can simply ask Bing to write a poem for you, and specify the topic, style, or mood of the poem. Bing will then use its natural language generation skills to create a poem for you. Here is an example of a poem that Bing wrote for me about love:",
-    image: "https://picsum.photos/1000",
-  },
-];
-
 function App() {
+  const [notes, setNotes] = useState([]);
+  function handleDelete(id) {
+    console.log(id);
+    const updatedNotes = notes.filter((note) => note.date !== id);
+    setNotes(updatedNotes);
+  }
+
   return (
     <>
+      <Header />
       <main className="container">
         {notes.map((e) => (
           <Note
             title={e.title}
             content={e.content}
             img={e.image}
-            key={e.title}
+            date={e.date}
+            key={crypto.randomUUID()}
+            handleDelete={handleDelete}
           />
         ))}
       </main>
-      <NewNote />
+      <NewNote setNotes={setNotes} />
     </>
   );
 }
 
-function Note({ title, content, img }) {
+function Header() {
+  return (
+    <header>
+      <div>
+        <svg
+          id="svg"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xlink="http://www.w3.org/1999/xlink"
+          width="150"
+          height="150"
+          viewBox="0, 0, 400,400"
+        >
+          <g id="svgg">
+            <path
+              id="path0"
+              d="M184.000 95.051 C 172.053 98.174,161.427 108.310,157.633 120.200 C 156.443 123.931,156.788 123.974,149.636 119.185 C 109.643 92.408,54.636 137.686,86.259 171.353 L 89.033 174.306 85.379 178.370 C 77.498 187.136,79.327 199.456,89.385 205.351 C 100.791 212.035,119.801 201.425,122.264 187.002 C 122.894 183.309,124.358 182.225,125.065 184.928 C 127.147 192.890,112.602 218.036,103.141 222.830 C 97.726 225.574,92.474 225.446,95.281 222.639 C 97.702 220.218,93.485 213.151,89.131 212.334 C 81.562 210.914,75.200 216.817,75.200 225.258 C 75.200 242.129,93.590 253.696,111.062 247.814 C 116.885 245.854,116.921 245.852,116.457 247.520 C 110.733 268.117,120.516 289.861,137.187 293.597 C 145.273 295.409,157.699 289.077,164.890 279.479 C 168.890 274.142,171.357 275.108,167.959 280.681 C 165.367 284.933,158.533 291.017,154.707 292.478 C 150.870 293.944,150.417 294.725,152.697 295.945 C 154.927 297.138,161.933 293.369,166.912 288.297 L 171.025 284.108 172.697 288.693 C 183.549 318.457,225.539 321.107,257.142 294.023 L 260.848 290.847 270.224 290.823 C 287.122 290.781,299.400 281.198,297.125 269.826 L 296.647 267.436 301.458 267.000 C 317.346 265.559,333.232 246.840,330.349 232.955 C 328.686 224.945,319.598 218.595,316.087 222.990 C 315.379 223.875,313.835 224.825,312.656 225.101 C 310.430 225.622,308.000 227.576,308.000 228.845 C 308.000 229.247,309.170 228.863,310.600 227.991 C 320.437 221.994,328.227 231.203,322.647 242.232 C 312.959 261.380,283.378 266.359,286.771 248.271 C 287.408 244.877,289.243 244.813,289.912 248.162 C 291.797 257.584,303.783 256.543,313.296 246.131 C 320.344 238.417,322.171 232.751,318.097 231.244 C 313.736 229.631,309.644 232.648,307.662 238.938 C 304.932 247.597,299.178 250.501,294.338 245.662 C 291.033 242.356,291.427 238.019,295.218 235.990 C 298.580 234.191,301.746 238.037,299.600 241.313 C 298.456 243.058,298.473 243.200,299.822 243.200 C 303.339 243.200,304.378 238.557,301.537 235.533 C 298.631 232.439,303.516 226.481,317.600 215.944 C 326.792 209.067,336.049 199.673,338.436 194.800 C 344.171 183.096,338.226 169.514,326.290 167.048 L 321.764 166.114 327.084 160.057 C 341.009 144.203,345.009 129.509,339.326 115.082 C 336.613 108.194,331.163 104.024,329.143 107.292 C 328.815 107.823,327.671 106.703,326.313 104.521 C 322.976 99.160,320.631 98.005,313.706 98.315 C 310.550 98.456,305.600 104.069,305.600 107.506 C 305.600 111.185,306.859 111.268,307.541 107.635 C 308.970 100.015,319.181 99.471,321.628 106.885 C 326.361 121.226,302.250 138.644,280.822 136.363 C 277.510 136.010,270.940 135.812,266.221 135.922 C 253.150 136.227,246.591 134.536,247.457 131.086 C 248.578 126.623,249.471 126.229,255.610 127.494 C 282.153 132.961,313.135 124.894,316.459 111.649 C 318.158 104.879,312.874 104.836,309.603 111.593 C 307.268 116.417,305.967 116.655,303.915 112.634 C 293.638 92.489,261.844 89.749,243.850 107.457 L 239.504 111.734 234.036 109.076 C 231.028 107.614,226.902 105.349,224.866 104.042 C 210.422 94.774,196.652 91.744,184.000 95.051 M204.015 100.859 C 214.848 106.853,214.628 124.949,203.600 135.115 C 195.618 142.472,176.800 148.200,176.800 143.272 C 176.800 141.393,177.144 141.155,184.555 137.919 C 205.537 128.757,213.680 109.600,196.593 109.600 C 179.321 109.600,173.416 120.695,170.700 158.257 C 168.988 181.930,170.738 186.213,179.292 179.286 L 181.186 177.753 179.593 175.991 C 171.418 166.948,191.099 140.847,205.406 141.758 C 219.358 142.646,221.418 159.656,209.160 172.760 C 202.849 179.506,192.780 183.358,188.058 180.831 C 186.946 180.236,186.189 180.524,184.710 182.107 C 181.929 185.085,178.686 186.533,174.800 186.533 C 165.864 186.533,162.529 181.435,156.137 158.000 L 154.610 152.400 154.065 156.400 C 147.771 202.594,126.099 235.827,101.227 237.424 C 87.138 238.328,77.059 228.754,82.014 219.174 C 85.041 213.319,94.400 213.660,94.400 219.626 C 94.400 222.419,92.325 223.702,91.202 221.603 C 89.679 218.758,86.851 219.787,86.558 223.294 C 85.863 231.600,98.098 233.468,108.198 226.597 C 131.376 210.829,152.474 139.196,137.340 127.652 C 119.909 114.357,84.602 139.131,98.107 155.181 C 104.339 162.588,122.605 157.794,122.368 148.814 C 122.350 148.117,121.847 148.500,121.187 149.715 C 118.064 155.464,107.200 153.386,107.200 147.040 C 107.200 138.610,123.418 137.579,127.688 145.737 C 133.755 157.330,119.743 173.255,104.744 171.814 C 79.622 169.400,77.342 135.603,101.445 122.937 C 125.079 110.517,148.150 118.131,156.054 140.957 C 158.520 148.077,158.694 147.952,159.600 138.400 C 162.295 109.984,185.325 90.519,204.015 100.859 M280.161 103.300 C 291.661 105.740,300.706 114.931,297.533 120.953 C 295.202 125.379,291.317 125.221,288.117 120.570 C 280.541 109.559,260.958 109.284,251.735 120.059 C 247.769 124.692,246.517 127.675,240.493 146.836 C 234.853 164.774,234.180 168.998,236.742 170.369 C 239.646 171.923,250.824 164.995,249.934 162.192 C 245.371 147.814,270.718 131.493,282.376 141.303 C 289.435 147.242,280.892 158.228,265.364 163.180 C 261.875 164.292,262.497 166.421,266.298 166.374 C 276.222 166.251,290.969 155.598,297.596 143.765 C 301.751 136.347,303.863 140.420,300.000 148.401 C 292.742 163.394,270.174 175.389,258.596 170.408 L 254.451 168.625 251.426 171.009 C 245.806 175.437,238.401 178.674,233.736 178.740 C 222.028 178.905,221.820 165.672,233.096 138.099 C 236.686 129.321,236.902 130.471,231.000 126.949 C 219.638 120.170,214.232 115.241,212.145 109.754 C 209.478 102.745,209.774 102.791,222.597 111.359 C 232.479 117.963,239.907 122.400,241.081 122.400 C 241.271 122.400,241.645 121.530,241.912 120.466 C 244.635 109.615,265.594 100.209,280.161 103.300 M333.572 111.147 C 341.874 126.661,307.520 175.200,288.237 175.200 C 285.299 175.200,284.231 175.691,281.303 178.391 C 277.239 182.136,271.205 184.966,262.427 187.241 C 251.885 189.974,248.396 190.362,227.200 191.161 C 193.163 192.445,175.740 198.040,160.178 212.683 C 158.736 214.040,156.141 215.531,154.412 215.997 C 149.120 217.422,150.083 218.237,157.004 218.191 C 168.940 218.110,178.155 225.785,174.445 232.716 C 173.155 235.126,172.245 234.844,168.513 230.882 C 158.986 220.766,144.480 224.659,136.260 239.538 C 132.932 245.561,132.924 255.209,136.245 258.067 C 139.367 260.756,139.999 260.509,140.005 256.600 C 140.019 247.841,150.186 242.863,156.062 248.738 C 164.891 257.568,149.009 269.837,136.249 264.044 C 132.404 262.298,128.000 256.787,128.000 253.720 C 128.000 248.880,126.271 253.766,126.167 258.901 C 125.631 285.289,147.956 288.484,160.308 263.786 C 169.584 245.239,162.070 232.513,146.706 240.748 C 141.520 243.528,140.555 240.045,145.400 236.031 C 157.529 225.981,174.363 233.703,174.392 249.329 C 174.427 267.691,152.211 289.905,137.372 286.345 C 115.878 281.189,116.173 242.050,137.836 224.856 C 140.369 222.845,143.453 219.580,144.688 217.600 C 146.813 214.193,154.152 206.820,160.297 201.917 L 163.091 199.687 160.779 197.054 C 157.452 193.265,155.693 185.540,158.175 185.620 C 158.519 185.631,159.880 187.852,161.200 190.554 C 164.541 197.395,165.356 197.738,170.990 194.672 C 183.780 187.714,196.860 184.889,220.562 183.967 C 230.771 183.570,242.831 182.657,247.362 181.937 C 275.762 177.426,303.299 161.297,307.293 146.834 C 307.854 144.800,309.258 143.117,312.238 140.905 C 322.318 133.425,329.234 123.070,330.163 114.068 C 330.647 109.380,332.004 108.218,333.572 111.147 M154.428 112.747 C 153.370 114.725,153.364 117.360,154.417 118.010 C 155.171 118.477,157.600 113.911,157.600 112.026 C 157.600 110.602,155.296 111.127,154.428 112.747 M198.398 121.800 C 198.397 122.350,196.418 123.833,194.001 125.097 C 191.584 126.360,188.019 128.790,186.080 130.497 C 180.951 135.011,179.470 134.741,182.497 129.843 C 185.740 124.596,198.405 118.190,198.398 121.800 M223.993 130.445 C 231.086 134.059,231.899 134.844,230.254 136.489 C 228.596 138.147,216.618 133.963,215.626 131.379 C 213.845 126.739,216.203 126.475,223.993 130.445 M132.253 134.500 C 135.133 135.984,137.600 138.585,137.600 140.139 C 137.600 142.018,137.356 141.987,133.783 139.647 C 132.142 138.572,129.090 137.270,127.000 136.752 C 123.330 135.842,122.605 135.261,123.733 134.133 C 124.593 133.273,130.352 133.521,132.253 134.500 M271.200 142.977 C 265.728 145.033,257.527 159.200,261.809 159.200 C 264.238 159.200,272.809 154.184,275.533 151.169 C 280.784 145.356,278.146 140.367,271.200 142.977 M220.355 145.778 C 221.637 147.609,222.066 151.205,221.000 151.194 C 220.426 151.188,216.800 145.358,216.800 144.442 C 216.800 143.280,219.250 144.201,220.355 145.778 M204.200 148.791 C 200.962 150.765,200.938 151.617,204.072 153.237 C 207.146 154.827,208.467 154.366,209.012 151.516 C 209.869 147.032,208.426 146.215,204.200 148.791 M194.146 156.655 C 184.862 170.544,187.884 183.057,197.571 170.842 C 204.493 162.116,206.571 157.217,203.662 156.487 C 202.596 156.219,200.695 155.135,199.438 154.078 L 197.153 152.155 194.146 156.655 M133.892 166.807 C 136.115 172.600,128.750 177.632,116.800 178.483 C 101.748 179.556,89.339 185.979,92.519 191.052 C 94.557 194.305,101.863 192.641,108.097 187.505 C 115.966 181.022,119.354 185.062,111.996 192.154 C 103.086 200.742,93.106 201.714,88.224 194.470 C 81.504 184.498,92.930 175.568,113.600 174.637 C 124.985 174.125,127.058 173.389,130.110 168.778 C 132.383 165.343,133.172 164.931,133.892 166.807 M327.561 173.932 C 337.082 177.910,333.643 185.585,313.191 206.000 C 297.369 221.793,295.568 223.914,288.405 235.200 C 277.016 253.143,274.562 256.837,270.183 262.636 C 247.694 292.414,223.721 304.866,198.976 299.623 C 175.918 294.737,169.276 274.564,187.732 265.474 C 198.589 260.127,225.050 263.115,220.063 269.124 C 219.285 270.061,218.579 270.055,215.374 269.080 C 192.137 262.015,171.220 280.535,192.182 289.614 C 206.850 295.968,230.012 290.687,244.707 277.637 L 249.015 273.812 241.107 269.351 C 236.758 266.897,229.960 263.339,226.000 261.445 L 218.800 258.000 207.000 258.000 C 194.951 258.000,194.266 257.848,196.456 255.658 C 202.546 249.568,220.817 252.572,242.791 263.277 C 254.557 269.008,254.668 269.043,255.929 267.406 C 256.628 266.498,259.391 262.930,262.069 259.477 C 266.422 253.866,275.200 240.777,275.200 239.899 C 275.200 239.711,273.780 239.693,272.044 239.859 C 263.760 240.649,262.606 232.649,269.034 219.000 L 272.707 211.200 278.419 211.200 L 284.130 211.200 282.539 213.800 C 267.389 238.541,272.407 242.230,288.796 218.400 C 294.390 210.266,295.588 208.988,299.140 207.370 C 306.767 203.896,324.000 185.713,324.000 181.140 C 324.000 175.422,318.646 177.512,311.587 185.987 C 300.968 198.736,290.798 201.208,283.695 192.767 C 279.429 187.697,282.083 178.305,287.942 177.741 C 291.382 177.409,291.973 178.398,291.988 184.514 C 292.011 193.718,296.997 193.153,306.800 182.836 C 316.095 173.054,320.716 171.072,327.561 173.932 M264.789 192.794 C 265.604 193.230,266.678 194.819,267.175 196.323 C 267.671 197.828,268.600 199.259,269.239 199.504 C 275.019 201.722,264.041 210.675,254.028 211.910 L 250.055 212.400 246.715 220.911 C 243.166 229.955,239.998 242.031,240.003 246.499 C 240.015 257.397,253.301 257.480,261.180 246.631 C 264.568 241.964,267.355 242.156,265.559 246.933 C 261.700 257.201,247.616 261.951,236.794 256.636 C 226.919 251.786,226.756 242.946,236.151 221.814 C 238.373 216.815,240.058 212.606,239.896 212.460 C 238.598 211.297,223.817 208.800,218.229 208.800 C 202.244 208.800,188.001 223.910,187.698 241.189 C 187.540 250.225,190.838 249.495,196.292 239.288 L 198.916 234.376 200.858 237.388 C 204.712 243.366,210.415 244.184,215.340 239.466 C 218.399 236.535,218.202 236.000,214.061 236.000 C 211.422 236.000,209.898 235.474,208.061 233.929 C 206.221 232.381,205.600 232.167,205.600 233.082 C 205.600 233.755,205.960 234.528,206.400 234.800 C 207.799 235.665,207.261 237.600,205.621 237.600 C 200.400 237.600,200.627 224.973,205.974 217.963 C 212.882 208.906,227.186 212.473,227.197 223.255 C 227.213 238.692,210.388 254.488,198.211 250.470 C 195.989 249.736,195.009 249.795,193.129 250.776 C 179.695 257.781,173.190 237.395,183.888 221.817 C 196.171 203.933,210.344 198.736,234.713 203.179 L 244.227 204.913 247.871 200.748 C 254.683 192.960,260.228 190.353,264.789 192.794 M284.812 201.600 C 287.751 201.600,291.562 204.133,290.171 205.161 C 286.560 207.833,276.000 201.656,276.000 196.872 C 276.000 194.155,277.103 194.430,280.522 197.998 C 282.420 199.979,284.351 201.600,284.812 201.600 M257.851 197.194 C 255.919 198.547,252.399 203.866,253.022 204.489 C 253.696 205.163,258.700 202.733,260.270 200.970 C 262.975 197.932,261.062 194.946,257.851 197.194 M107.485 209.778 C 105.788 211.278,103.230 213.316,101.800 214.307 C 99.041 216.219,98.437 218.157,100.369 218.899 C 103.076 219.938,113.256 209.736,111.382 207.862 C 110.833 207.313,109.572 207.933,107.485 209.778 M184.322 212.673 C 184.551 213.044,183.447 214.574,181.870 216.073 C 180.292 217.573,178.007 220.147,176.793 221.793 C 174.226 225.271,171.732 224.368,173.638 220.651 C 176.243 215.570,182.995 210.527,184.322 212.673 M211.013 219.176 C 206.710 222.560,207.920 230.495,212.944 231.832 C 218.301 233.257,222.560 229.946,222.560 224.355 C 222.560 218.430,215.810 215.402,211.013 219.176 M254.924 229.203 C 254.397 233.043,251.642 239.200,250.450 239.200 C 249.035 239.200,249.079 237.121,250.594 232.400 C 251.441 229.760,252.273 227.150,252.442 226.600 C 253.370 223.584,255.402 225.715,254.924 229.203 M259.145 238.269 C 257.235 244.643,247.200 251.867,247.200 246.869 C 247.200 246.299,248.792 244.826,250.739 243.595 C 253.012 242.158,255.046 239.947,256.427 237.408 C 259.003 232.676,260.663 233.202,259.145 238.269 M145.157 253.154 C 142.264 257.569,145.255 261.224,149.936 258.992 C 155.083 256.537,154.525 251.200,149.120 251.200 C 147.158 251.200,146.093 251.725,145.157 253.154 M287.636 261.964 C 294.531 268.858,283.447 279.213,269.200 279.187 C 260.617 279.172,259.632 278.481,263.099 274.905 C 265.231 272.705,266.759 271.967,270.572 271.295 C 278.541 269.891,282.992 266.412,280.967 263.170 C 278.733 259.592,284.264 258.592,287.636 261.964 M148.910 272.259 C 145.549 275.620,141.076 276.002,137.761 273.213 C 134.103 270.135,134.331 270.000,143.185 270.000 L 151.170 270.000 148.910 272.259 M231.692 273.297 C 235.079 274.905,235.621 275.729,234.319 277.297 C 227.848 285.095,195.313 288.250,196.147 281.000 C 196.628 276.816,201.973 274.976,212.018 275.537 C 220.047 275.985,220.564 275.916,223.218 274.042 C 226.530 271.705,228.053 271.571,231.692 273.297 M225.400 275.248 C 224.185 275.970,223.345 279.200,224.373 279.200 C 225.719 279.200,230.379 276.334,230.152 275.645 C 229.767 274.472,227.083 274.248,225.400 275.248 "
+              stroke="none"
+              fill="#000000"
+              fill-rule="evenodd"
+            ></path>
+          </g>
+        </svg>
+        <svg
+          width="50"
+          height="5"
+          viewBox="0 0 100 2"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line x1="0" y1="1" x2="100" y2="1" stroke="black" strokeWidth="1" />
+        </svg>
+        <h1>Noteify</h1>
+      </div>
+    </header>
+  );
+}
+
+function Note({ title, content, img, handleDelete, date }) {
   return (
     <div className="note">
       <img src={img} alt="" />
       <h1>{title}</h1>
       <h2>{content}</h2>
       <span>
-        <p>Posted on:</p>
-        <button>Delete</button>
+        <p>Posted on: {date}</p>
+        <button onClick={() => handleDelete(date)}>Delete</button>
       </span>
     </div>
   );
 }
 
-function Button() {
-  const [rotate, setRotate] = useState(false);
-
-  const handleRotate = () => {
-    setRotate(!rotate);
-  };
-
+function Button({ onClick, rotate }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
-      width="5vw"
-      height="5vw"
+      width="100"
+      height="100"
       preserveAspectRatio="xMidYMid meet"
       className={`new_note_button ${rotate ? "rotate" : ""}`}
-      onClick={handleRotate}
+      onClick={onClick}
     >
       <circle cx="50" cy="50" r="40" fill="rgba(18, 255, 77, 1)" />
       <line x1="30" y1="50" x2="70" y2="50" stroke="white" strokeWidth="5" />
@@ -115,10 +98,79 @@ function Button() {
   );
 }
 
-function NewNote() {
+function Form({ setNotes, handleRotate }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
+
+  function getFormattedDateTime() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    return `${day}-${month}-${year} ${hours}:${minutes}`;
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    if (!title && !content) return;
+    const newNote = {
+      title,
+      content,
+      image,
+      date: getFormattedDateTime(),
+    };
+
+    setTitle("");
+    setContent("");
+    setImage("");
+    handleRotate();
+    return setNotes((f) => [...f, newNote]);
+  }
+  return (
+    <form className="form" onSubmit={onSubmit}>
+      <label>Title:</label>
+      <input
+        value={title}
+        type="text"
+        placeholder=" . . . "
+        onChange={(e) => setTitle(e.target.value)}
+      />
+
+      <label>Content:</label>
+      <textarea
+        value={content}
+        type="text"
+        placeholder=" TODAY I . . . "
+        onChange={(e) => setContent(e.target.value)}
+      />
+
+      <label>Image:</label>
+      <input
+        value={image}
+        type="text"
+        placeholder=" LINK . . . "
+        onChange={(e) => setImage(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+function NewNote({ setNotes }) {
+  const [rotate, setRotate] = useState(false);
+  const handleRotate = () => {
+    setRotate(!rotate);
+  };
+
   return (
     <div className="new_note">
-      <Button />
+      {rotate ? <Form setNotes={setNotes} handleRotate={handleRotate} /> : ""}
+      <Button onClick={handleRotate} rotate={rotate} />
     </div>
   );
 }

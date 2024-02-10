@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 
 function App() {
+  const columns = 5; // Set the desired number of columns
+
+  const columnsArray = Array.from({ length: columns }, () => []);
+
   const [notes, setNotes] = useState([]);
   function handleDelete(id) {
     console.log(id);
@@ -9,19 +13,27 @@ function App() {
     setNotes(updatedNotes);
   }
 
+  notes.forEach((note, index) => {
+    const columnIndex = index % columns;
+    columnsArray[columnIndex].push(note);
+  });
   return (
     <>
       <Header />
       <main className="container">
-        {notes.map((e) => (
-          <Note
-            title={e.title}
-            content={e.content}
-            img={e.image}
-            date={e.date}
-            key={crypto.randomUUID()}
-            handleDelete={handleDelete}
-          />
+        {columnsArray.map((column, columnIndex) => (
+          <ul key={columnIndex}>
+            {column.map((e, index) => (
+              <Note
+                title={e.title}
+                content={e.content}
+                img={e.image}
+                date={e.date}
+                key={e.date}
+                handleDelete={handleDelete}
+              />
+            ))}
+          </ul>
         ))}
       </main>
       <NewNote setNotes={setNotes} />

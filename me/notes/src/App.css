@@ -60,8 +60,7 @@ header>div>h1 {
 
 .note {
   user-select: none;
-  max-width: 15%;
-  min-width: min-content;
+  max-width: 340px;
   padding: 25px;
   margin: 15px;
   border-radius: 4px;
